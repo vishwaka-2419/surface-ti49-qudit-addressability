@@ -1,0 +1,21 @@
+{
+  "title": "Surface 49Ti nuclear-qudit addressability: analysis and frozen data",
+  "description": "Manuscript-level analysis scripts and frozen derived data for a spectroscopy-to-control study of the atomically addressable 49Ti I=7/2 nuclear-spin platform on MgO/Ag(100).",
+  "creators": [
+    {
+      "name": "Vishwakarma, Aishwarya",
+      "affiliation": "Department of Quantum Matter Physics, University of Geneva"
+    }
+  ],
+  "license": "MIT",
+  "upload_type": "software",
+  "version": "1.0.0",
+  "keywords": [
+    "nuclear spin",
+    "qudit",
+    "ESR-STM",
+    "49Ti",
+    "quantum control",
+    "Gray encoding"
+  ]
+}
