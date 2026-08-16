@@ -1,0 +1,21 @@
+R9C INTERPRETATION LOCK
+
+Hamiltonian/Pauli-evolution product-formula compilation was tested only as
+an approximate structure-aware control.
+
+Within the tested Lie-Trotter and second-order Suzuki-Trotter schedules,
+accuracy improves only at a large two-qubit-gate cost.
+
+The best tested approximation reached unitary error norm approximately
+7.9e-2 at 146 CX gates.
+
+This is substantially worse than the exact generic synthesis of the
+Gray-encoded d=8 Iy(pi/2) rotation, which requires 9 CX gates in the
+local all-to-all/linear logical comparison.
+
+Therefore Pauli-product-formula synthesis is not competitive for the
+specific single-spin rotation studied here and is retained only as a
+negative supplementary benchmark.
+
+No claim is made that all Hamiltonian-aware compilation strategies are
+inefficient.

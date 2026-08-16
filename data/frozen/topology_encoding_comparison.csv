@@ -1,0 +1,3 @@
+topology,binary_median_cx,gray_median_cx,cx_reduction_percent,binary_median_depth,gray_median_depth,depth_reduction_percent
+all_to_all_3q,16.0,9.0,43.75,62.0,36.0,41.935483870967744
+linear_3q,22.0,9.0,59.09090909090909,80.0,36.0,55.0

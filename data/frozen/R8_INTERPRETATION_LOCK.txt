@@ -1,0 +1,17 @@
+R8 INTERPRETATION LOCK
+
+1. The reported ~5.3 s 49Ti nuclear lifetime is a population lifetime and is not used as T2.
+
+2. Electron T1 ~0.1 us is much shorter than candidate nuclear gate times, but this alone does not determine nuclear coherence.
+
+3. Physical electron-jump matrix elements in the effective Hamiltonian are overwhelmingly nuclear-index preserving; direct nuclear-index-changing jump weight is ~10^-8 in the studied model.
+
+4. In the unresolved-bath limit, rapid electron relaxation produces negligible nuclear-channel error because the electron jump is nearly proportional to identity in nuclear logical space.
+
+5. In the fully nuclear-resolved limit, electron relaxation strongly dephases nuclear superpositions because the environment obtains which-nuclear-state information.
+
+6. Bath distinguishability is presently not experimentally determined. The two limits therefore constitute sensitivity bounds, not a measured decoherence prediction.
+
+7. Independent pure-dephasing calculations show approximate requirements T2_adj/t_gate ~10^3 for 99% and ~10^4 for 99.9% average logical fidelity.
+
+8. These T2 values are design requirements, not predictions of 49Ti nuclear coherence.

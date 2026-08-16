@@ -1,0 +1,4 @@
+encoding,min_cx,median_cx,min_depth,median_depth,max_unitary_error
+generic_binary_single_rotation,16,16.0,62,62.0,1.4437090419577533e-14
+generic_gray_single_rotation,9,9.0,36,36.0,7.078391546119571e-15
+gray_adjacent_givens,216,216.0,638,638.0,1.8809251963486478e-14

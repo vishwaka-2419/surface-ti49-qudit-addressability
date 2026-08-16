@@ -1,0 +1,41 @@
+R11 FINAL IBM INTERPRETATION LOCK
+
+Backend: ibm_marrakesh
+Physical qubits: [134, 135, 139]
+Shots per circuit: 4096
+Matched transpiler seeds: 3, 7, 11, 19, 23
+
+Benchmark:
+Exact d=8 Iy(pi/2) encoded rotation followed by its inverse,
+with a barrier preventing compiler cancellation.
+
+Binary encoding:
+mean return probability = 0.848974609375
+median native 2Q count = 49
+median depth = 185
+
+Gray encoding:
+mean return probability = 0.910400390625
+median native 2Q count = 18
+median depth = 69
+
+Mean paired Gray-minus-binary return probability = 0.06142578125.
+
+Gray outperformed binary for all five matched transpiler seeds.
+
+Median native two-qubit-count reduction = 63.27%.
+Median circuit-depth reduction = 62.70%.
+
+INTERPRETATION:
+This measurement is an inversion/echo return-probability benchmark,
+not a process fidelity or average gate fidelity measurement.
+
+The result demonstrates that the qubit cost of representing the
+same d=8 spin rotation depends strongly on encoding. Gray encoding
+substantially reduces hardware compilation overhead and produces
+a consistently higher measured return probability on the tested
+IBM processor.
+
+No claim is made that this constitutes a general optimal qubit
+encoding or a direct comparison of native Ti nuclear-gate fidelity
+with IBM hardware fidelity.

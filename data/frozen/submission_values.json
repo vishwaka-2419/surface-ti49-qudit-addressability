@@ -1,0 +1,48 @@
+{
+  "field_selection": {
+    "readout_field_T": 1.35,
+    "readout_field_worst_inter_manifold_MHz": 0.0541964233925682,
+    "robust_operating_field_T": 1.7139999999999929,
+    "robust_field_worst_inter_manifold_MHz": 1.0927413435001654,
+    "status": "model prediction / sensitivity envelope"
+  },
+  "logical_control": {
+    "5": {
+      "gate_time_us": 49.99999999999999,
+      "Favg_1p35T": 0.9880426965788744,
+      "Favg_robust_field": 0.9994750455088158
+    },
+    "10": {
+      "gate_time_us": 25.0,
+      "Favg_1p35T": 0.9414267763511174,
+      "Favg_robust_field": 0.9974387092435586
+    },
+    "20": {
+      "gate_time_us": 12.499999999999998,
+      "Favg_1p35T": 0.5458030017245026,
+      "Favg_robust_field": 0.9908015624555396
+    },
+    "35": {
+      "gate_time_us": 7.1428571428571415,
+      "Favg_1p35T": 0.1982569571479973,
+      "Favg_robust_field": 0.9766252715317127
+    }
+  },
+  "encoding": {
+    "local_binary_CX": 16.0,
+    "local_gray_CX": 9.0,
+    "linear_topology_CX_reduction_percent": 59.09090909090909
+  },
+  "IBM_hardware": {
+    "backend": "ibm_marrakesh",
+    "physical_qubits": "[134, 135, 139]",
+    "binary_mean_return": 0.848974609375,
+    "gray_mean_return": 0.910400390625,
+    "paired_gray_minus_binary": 0.06142578125,
+    "binary_median_twoq": 49.0,
+    "gray_median_twoq": 18.0,
+    "twoq_reduction_percent": 63.265306122448976,
+    "depth_reduction_percent": 62.7027027027027,
+    "observable": "matched inversion/echo return probability; not process fidelity"
+  }
+}

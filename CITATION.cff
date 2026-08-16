@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this software or frozen data, please cite the Zenodo release and accompanying manuscript."
+title: "Surface 49Ti nuclear-qudit addressability: analysis and frozen data"
+version: 1.0.0
+type: software
+authors:
+  - family-names: Vishwakarma
+    given-names: Aishwarya
+    affiliation: "Department of Quantum Matter Physics, University of Geneva"
+license: MIT
+repository-code: "https://github.com/vishwaka-2419/surface-ti49-qudit-addressability"

@@ -1,0 +1,39 @@
+section,key,value,unit,status,manuscript_use
+platform,49Ti nuclear spin,3.5,hbar,source-backed,I=7/2 gives an eight-dimensional nuclear-spin Hilbert space.
+platform,nuclear population lifetime,5.3,s,source-backed,Population lifetime only; never call this T2.
+platform,single-shot readout fidelity,0.98,probability,source-backed,Reported single-shot nuclear-state readout performance.
+platform,transverse hyperfine,10.0,MHz,source-backed,Central physical value for Ax=Ay sensitivity model.
+platform,kappa49 prediction,-46.373841059602654,MHz,isotope-scaled prediction,Same-EFG isotope-scaled value; not measured directly on 49Ti.
+field_selection,1.35T worst inter-manifold separation,0.0541964233925682,MHz,parameter/model envelope,Use to quantify spectral fragility of the readout-derived field.
+field_selection,robust operating field,1.7139999999999929,T,model prediction,Uncertainty-aware predicted operating field; extrapolative beyond measured 1.4 T spectroscopy range.
+field_selection,robust-field worst inter-manifold separation,1.0927413435001654,MHz,parameter/model envelope,Worst separation over sampled parameter/model set.
+control,1.35T 14-tone logical Favg at 5 kHz,0.9880426965788744,probability,coherent model,Logical Iy(pi/2) fidelity in static electron-manifold model.
+control,robust-field 14-tone logical Favg at 5 kHz,0.9994750455088158,probability,coherent model,Logical Iy(pi/2) fidelity in static electron-manifold model.
+control,1.35T 14-tone logical Favg at 10 kHz,0.9414267763511174,probability,coherent model,Logical Iy(pi/2) fidelity in static electron-manifold model.
+control,robust-field 14-tone logical Favg at 10 kHz,0.9974387092435586,probability,coherent model,Logical Iy(pi/2) fidelity in static electron-manifold model.
+control,1.35T 14-tone logical Favg at 20 kHz,0.5458030017245026,probability,coherent model,Logical Iy(pi/2) fidelity in static electron-manifold model.
+control,robust-field 14-tone logical Favg at 20 kHz,0.9908015624555396,probability,coherent model,Logical Iy(pi/2) fidelity in static electron-manifold model.
+control,1.35T 14-tone logical Favg at 35 kHz,0.1982569571479973,probability,coherent model,Logical Iy(pi/2) fidelity in static electron-manifold model.
+control,robust-field 14-tone logical Favg at 35 kHz,0.9766252715317127,probability,coherent model,Logical Iy(pi/2) fidelity in static electron-manifold model.
+coherence_requirement,T2 requirement 0.990 fidelity at 10 kHz,25118.864315095823,us,pure-dephasing requirement,"Design requirement, not a measured or predicted 49Ti T2."
+coherence_requirement,T2 requirement 0.999 fidelity at 10 kHz,251188.6431509582,us,pure-dephasing requirement,"Design requirement, not a measured or predicted 49Ti T2."
+coherence_requirement,T2 requirement 0.990 fidelity at 20 kHz,12589.254117941688,us,pure-dephasing requirement,"Design requirement, not a measured or predicted 49Ti T2."
+coherence_requirement,T2 requirement 0.999 fidelity at 20 kHz,125892.54117941688,us,pure-dephasing requirement,"Design requirement, not a measured or predicted 49Ti T2."
+coherence_requirement,T2 requirement 0.990 fidelity at 35 kHz,7079.457843841381,us,pure-dephasing requirement,"Design requirement, not a measured or predicted 49Ti T2."
+coherence_requirement,T2 requirement 0.999 fidelity at 35 kHz,70794.57843841388,us,pure-dephasing requirement,"Design requirement, not a measured or predicted 49Ti T2."
+bath_sensitivity,max sampled eta for 0.990 at 10 kHz,0.0001,dimensionless,phenomenological sensitivity,Sampled-grid bath-distinguishability requirement; not a measured material parameter.
+bath_sensitivity,max sampled eta for 0.999 at 10 kHz,1e-05,dimensionless,phenomenological sensitivity,Sampled-grid bath-distinguishability requirement; not a measured material parameter.
+bath_sensitivity,max sampled eta for 0.990 at 20 kHz,0.0003,dimensionless,phenomenological sensitivity,Sampled-grid bath-distinguishability requirement; not a measured material parameter.
+bath_sensitivity,max sampled eta for 0.999 at 20 kHz,3e-05,dimensionless,phenomenological sensitivity,Sampled-grid bath-distinguishability requirement; not a measured material parameter.
+bath_sensitivity,max sampled eta for 0.990 at 35 kHz,0.0003,dimensionless,phenomenological sensitivity,Sampled-grid bath-distinguishability requirement; not a measured material parameter.
+bath_sensitivity,max sampled eta for 0.999 at 35 kHz,3e-05,dimensionless,phenomenological sensitivity,Sampled-grid bath-distinguishability requirement; not a measured material parameter.
+encoding,binary exact single-rotation CX count,16.0,CX,exact local synthesis,Same Iy(pi/2) logical operation.
+encoding,Gray exact single-rotation CX count,9.0,CX,exact local synthesis,Same Iy(pi/2) logical operation.
+encoding,linear-topology Gray CX reduction,59.09090909090909,%,local routing,Three-qubit linear coupling-map comparison.
+IBM_hardware,binary mean inversion return,0.848974609375,probability,measured,Matched echo return probability; not process fidelity.
+IBM_hardware,Gray mean inversion return,0.910400390625,probability,measured,Matched echo return probability; not process fidelity.
+IBM_hardware,paired Gray-minus-binary return,0.06142578125,probability,measured,Mean paired improvement across five transpiler seeds.
+IBM_hardware,binary median native 2Q count,49.0,2Q gates,backend compiled,ibm_marrakesh matched echo benchmark.
+IBM_hardware,Gray median native 2Q count,18.0,2Q gates,backend compiled,ibm_marrakesh matched echo benchmark.
+IBM_hardware,hardware 2Q reduction,63.265306122448976,%,backend compiled,Matched physical-qubit triplet and seed set.
+IBM_hardware,hardware depth reduction,62.7027027027027,%,backend compiled,Matched physical-qubit triplet and seed set.

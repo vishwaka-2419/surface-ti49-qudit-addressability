@@ -1,0 +1,14 @@
+name: ti49-qudit
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - numpy
+  - pandas
+  - scipy
+  - matplotlib
+  - pytest
+  - pip
+  - pip:
+      - qiskit==2.5.2
+      - qiskit-ibm-runtime==0.47.0

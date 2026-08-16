@@ -1,0 +1,11 @@
+{
+  "backend": "ibm_marrakesh",
+  "job_id": "da0ppt8b1g9c73aa4650",
+  "shots_per_circuit": 4096,
+  "n_circuits": 10,
+  "physical_qubits": [
+    134,
+    135,
+    139
+  ]
+}
