@@ -1,0 +1,281 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=2.25cm]{geometry}
+\usepackage{amsmath,amssymb,bm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{caption}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{newtxtext,newtxmath}
+\usepackage{authblk}
+\usepackage{titlesec}
+\setlength{\parindent}{1.2em}
+\setlength{\parskip}{0.2em}
+\setlist{nosep}
+\titleformat{\section}{\large\bfseries}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.6em}{}
+\captionsetup{font=small,labelfont=bf}
+\hypersetup{colorlinks=true,linkcolor=black,citecolor=black,urlcolor=blue}
+
+\newcommand{\Ti}{$^{49}$Ti}
+\newcommand{\DeltaInter}{\Delta_{\mathrm{inter}}^{\min}}
+\newcommand{\fR}{f_R}
+
+\title{Quadrupole-limited control windows for an atomically addressable $^{49}$Ti nuclear-spin qudit}
+\author{Aishwarya Vishwakarma}
+\affil{Department of Quantum Matter Physics, University of Geneva, 1211 Geneva, Switzerland}
+\affil{Corresponding author: \href{mailto:Aishwarya.Vishwakarma@unige.ch}{Aishwarya.Vishwakarma@unige.ch}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Single-shot readout and single-atom nuclear magnetic resonance have made surface Ti nuclear spins directly accessible, but coherent control of the $I=7/2$ \Ti\ manifold requires a spectrum that remains selective across two electron-conditioned nuclear manifolds. We derive the corresponding addressability law and convert it into an experimentally testable field prescription. In the leading-order axial model, the seven transitions in each manifold form rigid combs with spacing $S=|\kappa|/14$. Taking the physical absolute transition frequencies reverses the order of one comb, so their global minimum separation is $\DeltaInter=\min_\ell|\ell S-2\gamma_NB|$, with the hard ceiling $\Delta_{\max}=|\kappa|/28$. A reconstructed and validated 16-level sensitivity envelope identifies a minimax field at $B=1.0292$ T, where the worst sampled separation is 1.188 MHz and remains above 1 MHz from 0.992 to 1.069 T. The 1.35 T single-shot-readout field gives only 0.0542 MHz in the same envelope. In a static-electron model, simultaneous fourteen-tone propagation of an $I_y(\pi/2)$ rotation gives a first 99\%-fidelity drive-rate crossing of 21.9 kHz at 1.0292 T, compared with 4.8 kHz at 1.35 T. The result is a control specification rather than a complete driven-dissipative gate prediction: at the demonstrated 0.4 K temperature the electron is not fully polarized, and electron switching must either be suppressed over the gate interval or included microscopically. For a prepared single electron manifold, the inter-manifold constraint is removed and the leading spectral spacing increases from at most $S/2$ to $S$. Finally, the general result $B_r^{\max}=3(2r+1)|\kappa|/[8I(2I-1)|\gamma_N|]$ shows how a measured quadrupole coupling sets the appropriate field, while electric-field-gradient engineering sets the maximum available selectivity. The framework therefore links single-atom spectroscopy to field choice, electron-state control and materials design for nuclear qudits.
+\end{abstract}
+
+\noindent\textbf{Keywords:} nuclear-spin qudit; ESR-STM; single-atom NMR; quantum control; spectral addressability; quadrupole interaction; electric-field gradient
+
+\section{Introduction}
+High-spin nuclei provide a compact route to high-dimensional quantum information because a single microscopic degree of freedom hosts $2I+1$ levels with structured transition matrix elements. In semiconductor donors, spin-$7/2$ nuclei have been controlled electrically, navigated through a 16-dimensional electron-nuclear Hilbert space and prepared in non-classical nuclear states \cite{asaad2020,fernandez2024,yu2025}. Hyperfine-coupled molecular systems have demonstrated logical encoding in a nuclear qudit \cite{lim2025prl}, and fault-tolerant encodings have been proposed for spin-$7/2$ nuclei \cite{lim2023pra}. Recent coherent electric-field manipulation of an $I=5/2$ nuclear qudit further illustrates how local materials parameters can become control resources \cite{lim2026electric}. These developments make platform-specific control constraints, rather than Hilbert-space dimension alone, the relevant design question.
+
+Surface spins addressed by electron-spin-resonance scanning tunnelling microscopy (ESR-STM) provide a complementary setting in which the atomic environment, readout junction and local magnetic field can be interrogated at the single-atom scale \cite{willke2018,veldman2024}. For \Ti\ on MgO/Ag(100), Stolte \emph{et al.}\ demonstrated single-shot nuclear-state readout with fidelity up to 98\% and measured a nuclear population lifetime of $5.3\pm0.5$ s \cite{stolte2025}. Single-atom NMR on $^{47}$Ti subsequently resolved quadrupole-split nuclear transitions over a 0.2 to 1.4 T field range and established a direct local-probe route to nuclear spectroscopy \cite{vennema2025}. Together, these experiments provide state-resolved readout and direct nuclear spectroscopy, but they do not specify where the complete $I=7/2$ manifold is most favorable for coherent control.
+
+The control bottleneck is created by the same electron that enables readout. For a fixed electron state, the quadrupolar nucleus has seven adjacent transitions. The two electron manifolds therefore generate two seven-line nuclear spectra. At the 0.4 K temperature of the single-shot experiment, electron scattering significantly populates the excited electron state \cite{stolte2025}; a simple Boltzmann estimate using $g_z=0.56$ and the 1.03 T external field gives an excited-state occupation of about 27\%, before smaller tip-field and hyperfine corrections. A drive intended to be compatible with an unknown electron state must consequently address both nuclear spectra. The field used for readout need not be the field that maximizes this dual-manifold selectivity.
+
+Here we derive the spectral structure that controls this problem and evaluate it with the full 16-level Hamiltonian. The analytic result gives the crossing period, the quadrupole-limited maximum separation and, for arbitrary $I$, the field of every local maximum. A deterministic sensitivity calculation then identifies an experimentally accessible minimax point near 1.03 T. Multitone propagation converts the spectral improvement into a static-manifold control-rate threshold. We also separate the role of electron-state preparation from the dual-manifold problem and identify the explicit electron-stability condition needed before the static control fidelity can be interpreted as a gate prediction. Finally, a field-quadrupole map shows how magnetic-field tuning and electric-field-gradient (EFG) engineering act as distinct experimental levers.
+
+\section{Model and design rules}
+\subsection{Effective 16-level Hamiltonian and parameter provenance}
+We model an effective electron spin $S=1/2$ coupled to the \Ti\ nuclear spin $I=7/2$. In frequency units,
+\begin{align}
+\frac{H}{h}={}&\frac{\mu_B}{h}\left[g_z(B+B_{\rm tip}\cos\phi)S_z+g_\perp B_{\rm tip}\sin\phi\,S_x\right]
++\frac{\mu_N}{h}g_NBI_z \nonumber\\
+&+A_zS_zI_z+A_\perp(S_xI_x+S_yI_y)+\frac{H_Q}{h},
+\label{eq:H}
+\end{align}
+with
+\begin{equation}
+\frac{H_Q}{h}=\frac{\kappa}{2I(2I-1)}\left[I_z^2-\frac{1}{2}(I_x^2+I_y^2)\right].
+\label{eq:HQ}
+\end{equation}
+The quadrupole convention follows the single-atom NMR analysis \cite{vennema2025}. The \Ti\ baseline uses the 130 MHz out-of-plane hyperfine scale reported for the single-shot platform \cite{stolte2025}, denoted $A_z$ in Eq.~\eqref{eq:H}. The $^{47}$Ti NMR fit provides contextual sensitivity ranges for $A_z$, $g_z$, $B_{\rm tip}$ and $\phi$ \cite{vennema2025}; transverse hyperfine and electron-$g$ components are treated as model-sensitivity axes because the surface tensor is site dependent \cite{kim2022}.
+
+The quadrupole parameter is isotope-scaled under a same-EFG assumption. The recommended moments $Q(^{47}{\rm Ti})=0.302(10)$ b and $Q(^{49}{\rm Ti})=0.247(11)$ b \cite{stone2016} give $Q_{49}/Q_{47}=0.81788$. Applied to $\kappa_{47}=-56.7\pm0.8$ MHz, this yields
+\begin{equation}
+\kappa_{49}=-46.3738\pm2.6554\ {\rm MHz},
+\end{equation}
+where the quoted uncertainty propagates the two nuclear moments and the fitted $\kappa_{47}$. This is a prediction for the same EFG, not a direct \Ti\ surface measurement. The numerical nuclear factor is $|g_N|=0.314686$, corresponding to $|\gamma_N|=(\mu_N/h)|g_N|=2.3987$ MHz/T.
+
+After diagonalization, states are separated into electron-like manifolds by the sign of $\langle S_z\rangle$. The seven adjacent nuclear-like transition frequencies are denoted $f_j^{(g)}(B)$ and $f_k^{(e)}(B)$. The dual-manifold addressability metric is the global minimum
+\begin{equation}
+\DeltaInter(B)=\min_{j,k}\left|f_j^{(g)}(B)-f_k^{(e)}(B)\right|.
+\label{eq:delta}
+\end{equation}
+The global minimum is used because the identity of the nearest competing pair changes with field.
+
+\subsection{Why the hyperfine offset cancels from the comb separation}
+The leading-order axial expression is most transparent if the signed adjacent transition is written before taking its physical absolute frequency. For $m_I\rightarrow m_I-1$ in electron manifold $m_s=\pm1/2$,
+\begin{equation}
+\nu_{m_s,m_I}=\gamma_NB+A_zm_s+\frac{3\kappa}{4I(2I-1)}(2m_I-1).
+\label{eq:signed}
+\end{equation}
+In the experimentally relevant strong-hyperfine regime, $A_z/2$ exceeds both the nuclear Zeeman term and the full quadrupolar excursion. A sufficient condition is
+\begin{equation}
+\frac{|A_z|}{2}>|\gamma_NB|+3S,
+\label{eq:stronghf}
+\end{equation}
+which is amply satisfied over the fields considered here. The $m_s=+1/2$ transitions therefore retain their order after taking $|\nu|$, whereas the $m_s=-1/2$ transitions reverse order. Reindexing the seven lines by $n,m=-3,\ldots,3$ gives
+\begin{align}
+f_n^{(+)}&=\frac{|A_z|}{2}+\gamma_NB+nS,\\
+f_m^{(-)}&=\frac{|A_z|}{2}-\gamma_NB-mS,
+\end{align}
+with
+\begin{equation}
+S=\frac{3|\kappa|}{2I(2I-1)}.
+\label{eq:Sgeneral}
+\end{equation}
+The common hyperfine offset $|A_z|/2$ therefore cancels between the two physical combs. Their pairwise difference is $2\gamma_NB+(n+m)S$, and Eq.~\eqref{eq:delta} reduces to
+\begin{equation}
+\DeltaInter(B)=\min_{\ell}|\ell S-2\gamma_NB|,
+\label{eq:comb}
+\end{equation}
+where $\ell$ spans the differences accessible to the two seven-line sets. This explicit absolute-value step is essential: without the order reversal, the two spectra appear spuriously separated by $A_z$.
+
+Within either individual comb the adjacent spacing is $S$. For two identical combs displaced relative to one another, the nearest-line separation is always at most $S/2$. Hence the inter-manifold constraint necessarily binds in dual-manifold operation:
+\begin{equation}
+\DeltaInter\leq\frac{S}{2}<S.
+\label{eq:binding}
+\end{equation}
+If the electron is prepared and remains in a single manifold, this inter-manifold constraint is removed and the leading spectral spacing available for selective adjacent-transition control is $S$.
+
+\subsection{General quadrupole-field design law}
+Equation~\eqref{eq:comb} is a sawtooth in $B$. For arbitrary quadrupolar spin $I$ in the same axial convention,
+\begin{equation}
+\Delta B=\frac{S}{2|\gamma_N|},\qquad
+\Delta_{\max}=\frac{S}{2}=\frac{3|\kappa|}{4I(2I-1)},
+\label{eq:generalceiling}
+\end{equation}
+and the local maxima occur at
+\begin{equation}
+B_r^{\max}=\left(r+\frac{1}{2}\right)\Delta B
+=\frac{3(2r+1)|\kappa|}{8I(2I-1)|\gamma_N|},\qquad r=0,1,2,\ldots
+\label{eq:Bgeneral}
+\end{equation}
+For $I=7/2$ this becomes
+\begin{equation}
+S=\frac{|\kappa|}{14},\qquad
+\Delta_{\max}=\frac{|\kappa|}{28},\qquad
+B_r^{\max}=\frac{(2r+1)|\kappa|}{56|\gamma_N|}.
+\label{eq:TiRule}
+\end{equation}
+Thus a direct measurement of $\kappa$ supplies the field prescription. At fixed $r$, a fractional revision of $|\kappa|$ shifts $B_r^{\max}$ by the same fractional amount. For the present isotope-scaled central value, $S=3.3124$ MHz, $\Delta_{\max}=1.6562$ MHz and the $r=1$ maximum is 1.0357 T. Across the propagated $\kappa$ interval, the corresponding analytic maximum moves from 0.9764 to 1.0950 T. The numerical 1.0292 T point below should therefore be interpreted as a minimax choice when $\kappa$ and the other model parameters have not yet been measured on the target junction.
+
+\subsection{Deterministic sensitivity envelope}
+The full 16-level field search samples
+\begin{align*}
+\kappa&\in\{-49.0292,-46.3738,-43.7184\}\ {\rm MHz},\\
+g_z&\in\{0.54,0.56,0.58\},\quad B_{\rm tip}\in\{65.8,67.9,70.0\}\ {\rm mT},\\
+\phi&\in\{3^\circ,5^\circ,7^\circ\},\quad A_z\in\{130,132.1\}\ {\rm MHz},\\
+A_\perp/A_z&\in\{0,0.05,0.10,0.20\},\quad g_\perp/g_z\in\{0.5,1.0,1.5\},
+\end{align*}
+for 1944 deterministic scenarios. This grid is a sensitivity envelope, not a probability distribution. The reconstructed workflow was first required to reproduce the archived worst-case values at 1.35 T and 1.714 T within $5\times10^{-5}$ MHz. The reconstructed values, 0.054185 and 1.092757 MHz, agree with the archived values 0.054196 and 1.092741 MHz.
+
+A one-at-a-time analysis at 1.0292 T shows that the envelope is dominated by the quadrupole and transverse-hyperfine axes. Across their documented ranges, $\kappa$ changes $\DeltaInter$ by 0.300 MHz and $A_\perp/A_z$ by 0.230 MHz. The next-largest one-at-a-time span, from $g_z$, is only 0.00238 MHz. The complete values are given in the Supplementary Information. This decomposition is more informative than the raw scenario count: the uncertainty in the operating window is primarily a quadrupole and transverse-hyperfine problem.
+
+\subsection{Static dual-manifold multitone control}
+The logical target is $U_{\rm target}=\exp[-i(\pi/2)I_y]$. Seven tones address the adjacent links of each static electron manifold, giving fourteen physical frequencies when both manifolds must be supported. The construction follows the multitone control logic used in high-spin nuclear-qudit experiments \cite{asaad2020,fernandez2024,yu2025}. Every tone shares one physical amplitude scale $\fR$; the resonant coupling of link $m$ is $\fR d_m$, where $d_m=\langle m-1|I_x|m\rangle$. The required Clebsch-Gordan amplitude pattern is therefore supplied by the projected $I_x$ matrix elements rather than by independently chosen tone amplitudes. Tone phases are $\arg(d_m)+\pi/2$, which generates the $I_y$ sense of rotation.
+
+The same fourteen-tone waveform is propagated independently in the two electron manifolds. With $d=8$, the average gate fidelity used for each unitary propagator $U$ is \cite{nielsen2002}
+\begin{equation}
+F_{\rm avg}(U,U_{\rm target})=\frac{\mathrm{Tr}(U^\dagger U)+|\mathrm{Tr}(U_{\rm target}^\dagger U)|^2}{d(d+1)}.
+\label{eq:Favg}
+\end{equation}
+The reported value is the lower of the two manifold-resolved fidelities. The effective generator rate $\fR$ is a model design variable, with $t_g=1/(4\fR)$. Because small coherent revivals occur, we define $\fR^{99}$ as the first crossing below 0.99 when $\fR$ is increased from the contiguous low-rate high-fidelity region. Dense scans use 0.25 kHz spacing near that crossing. This definition avoids interpreting isolated revival points as a continuous operating bandwidth.
+
+\section{Results}
+\subsection{The readout field is close to a spectral crossing}
+For the isotope-scaled central quadrupole parameter, Eq.~\eqref{eq:comb} gives crossings at 0.6905, 1.3809 and 2.0714 T, and maxima at 0.3452, 1.0357 and 1.7261 T. The 1.35 T single-shot-readout field lies only 31 mT below the 1.3809 T crossing. Its leading-order separation is 0.1483 MHz, while the full deterministic envelope gives a worst sampled separation of 0.0542 MHz. The readout field is therefore favorable for state discrimination but spectrally fragile for a control waveform that must remain compatible with both electron manifolds.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figures/Fig1_spectral_design.pdf}
+\caption{\textbf{Spectral structure and robust low-field window.} (a) Taking physical absolute transition frequencies reverses the order of one electron-conditioned comb. Near a crossing, lines from the two combs nearly coincide; halfway between crossings their minimum separation reaches $S/2$. (b) Closed-form addressability for the central isotope-scaled \Ti\ quadrupole parameter. (c) Full 16-level deterministic envelope near the experimentally accessible low-field maximum. The minimax point is 1.0292 T with worst sampled separation 1.188 MHz. The shaded interval from 0.992 to 1.069 T retains at least 1 MHz worst sampled separation. Labels and legends are placed outside the data-dense regions.}
+\label{fig:spectral}
+\end{figure}
+
+\subsection{The full model gives an experimentally accessible minimax field}
+The refined low-field calculation identifies
+\begin{equation}
+B_{\rm minimax}=1.0292\ {\rm T},\qquad \min_{\rm grid}\DeltaInter=1.1878\ {\rm MHz}.
+\end{equation}
+The optimum lies only 6.5 mT below the central analytic maximum at 1.0357 T. More importantly, the result is a broad field window rather than an isolated point: the worst sampled separation remains at least 1 MHz from 0.992 to 1.069 T (Fig.~\ref{fig:spectral}c). This entire interval lies inside the 0.2 to 1.4 T range already used for single-atom Ti NMR \cite{vennema2025}.
+
+The limiting scenario at 1.0292 T occurs at $\kappa=-43.7184$ MHz, $g_z=0.54$, $B_{\rm tip}=65.8$ mT, $\phi=7^\circ$, $A_z=132.1$ MHz, $A_\perp/A_z=0.20$ and $g_\perp/g_z=0.5$. The corner character of this scenario does not imply equal sensitivity to all parameters. The one-at-a-time decomposition shows that $\kappa$ and $A_\perp/A_z$ dominate, while the remaining axes perturb the source-backed separation at the kilohertz level or below. Direct measurement of \Ti\ $\kappa$ and the transverse hyperfine tensor would therefore constrain the field prescription much more effectively than further refinement of the tip-field or $g$-tensor ranges.
+
+The previously evaluated 1.714 T point remains a useful numerical comparator: its worst sampled separation is 1.0927 MHz. The accessible 1.0292 T solution therefore gives a larger worst-case separation without extending the field beyond the demonstrated single-atom NMR range.
+
+\subsection{The low-field window supports a larger static-manifold control rate}
+Figure~\ref{fig:control}a converts the spectral improvement into a control-rate constraint for the source-backed parameter realization. The first 99\%-fidelity crossing occurs at 4.815 kHz at 1.35 T and at 21.929 kHz at 1.0292 T, increasing the modeled contiguous high-fidelity drive range by a factor of 4.55. The 1.714 T comparator gives 21.613 kHz. Representative values are summarized in Table~\ref{tab:field}.
+
+\begin{table}[h]
+\centering
+\caption{Spectral and static-manifold control metrics. The ensemble-worst separation is taken over the deterministic sensitivity grid. The source-backed separation refers to the parameter realization used for the source-backed multitone calculation.}
+\label{tab:field}
+\begin{tabular}{lccc}
+\toprule
+ & 1.35 T & 1.0292 T & 1.714 T\\
+\midrule
+Ensemble-worst $\DeltaInter$ (MHz) & 0.0542 & 1.1878 & 1.0927\\
+Source-backed $\DeltaInter$ (MHz) & 0.1353 & 1.5911 & 1.5806\\
+First $\fR^{99}$ crossing (kHz) & 4.82 & 21.93 & 21.61\\
+Gate time at $\fR^{99}$ ($\mu$s) & 51.9 & 11.4 & 11.6\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The optimized control curves exhibit small non-monotonic revivals near the threshold (Fig.~\ref{fig:control}b). These features are coherent solutions of the deterministic propagation rather than a reason to choose the largest isolated passing point. The first-crossing definition is therefore retained as the operational bandwidth metric. We do not infer a universal linear law between $\fR^{99}$ and $\DeltaInter$ from the two optimized fields, since their source-backed separations differ by less than 1\%; establishing such a scaling requires control calculations over a wider range of separations.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figures/Fig2_control_bandwidth.pdf}
+\caption{\textbf{Static dual-manifold control and the first 99\% crossing.} (a) Worst-manifold average fidelity for one simultaneous fourteen-tone waveform. The vertical marker identifies the 4.8 kHz first crossing at the 1.35 T readout field. (b) Zoom near the optimized-field thresholds. Small coherent revivals are visible on both curves; the first crossings are 21.93 kHz at 1.0292 T and 21.61 kHz at 1.714 T. This calculation conditions on a static electron manifold and does not include stochastic electron switching.}
+\label{fig:control}
+\end{figure}
+
+\subsection{Field choice and EFG engineering solve different parts of the problem}
+Equations~\eqref{eq:generalceiling} and \eqref{eq:Bgeneral} separate the two available design levers. Magnetic field changes the relative phase of the two combs and therefore determines where crossings and maxima occur. It cannot raise the maximum separation. The local EFG enters through $|\kappa|$ and sets the ceiling itself. In the present \Ti\ scenario, $|\kappa|=46.37$ MHz gives $\Delta_{\max}=1.656$ MHz. A 3 MHz ceiling requires $|\kappa|=84$ MHz, while 5 MHz requires $|\kappa|=140$ MHz (Fig.~\ref{fig:materials}).
+
+This result also gives a practical calibration protocol. If $\kappa$ is measured on the specific \Ti\ junction, Eq.~\eqref{eq:TiRule} directly gives the target field. If it is not known, the 1.0292 T minimax solution provides a robust starting point across the documented model range. Because $B_r^{\max}$ is linear in $|\kappa|$, a fractional change in the measured quadrupole coupling produces the same fractional change in the optimum field. The design law therefore remains useful even if the isotope-scaled $\kappa$ used here is revised by a future direct measurement.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figures/Fig3_materials_map.pdf}
+\caption{\textbf{Field-quadrupole design map.} (a) Leading-order addressability as a function of external field and $|\kappa|$. Horizontal references indicate the present isotope-scaled scenario and the couplings corresponding to 3 and 5 MHz ceilings; vertical references mark the 1.0292 T minimax field, 1.35 T readout field and 1.714 T comparator. (b) The hard ceiling $\Delta_{\max}=|\kappa|/28$ for \Ti. Field tuning moves the operating window, while EFG engineering changes its maximum height.}
+\label{fig:materials}
+\end{figure}
+
+\section{Electron-state requirements and experimental protocol}
+\subsection{Why dual-manifold compatibility is relevant at 0.4 K}
+The single-shot measurements were performed at 0.4 K, where substrate scattering was reported to significantly populate the excited electron state \cite{stolte2025}. For orientation, the source-backed external-field electron Zeeman splitting at 1.0292 T is $g_z\mu_BB/h\simeq8.07$ GHz, equivalent to $h\nu/k_B\simeq0.387$ K. A two-level Boltzmann estimate therefore gives populations of approximately 0.72 and 0.28. Including the source-backed longitudinal tip field shifts the estimate only modestly. This thermal scale provides a direct physical reason to require a drive spectrum that is compatible with either electron-conditioned nuclear manifold when the electron has not been prepared.
+
+The dual-manifold construction carries a clear spectral price. With an unknown static electron state, the minimum separation between the two combs can never exceed $S/2$. If the electron is prepared and remains in one manifold, only seven tones are required and the inter-manifold constraint disappears; the nearest leading-order spectral spacing is then $S$. Thus electron-state preparation doubles the available leading-order spectral selectivity budget. We do not convert this factor of two into a gate-rate prediction without a dedicated seven-tone propagation, because the coherent control threshold also depends on matrix elements and multitone interference.
+
+\subsection{Electron switching defines an explicit validity condition}
+The measured electron lifetime on the same atom is approximately 100 ns, far shorter than the 11.4 $\mu$s gate-time scale corresponding to $\fR^{99}$ at 1.0292 T \cite{stolte2025}. Consequently, the static-manifold fidelity in Fig.~\ref{fig:control} is not a complete prediction for the demonstrated readout junction. It is the coherent control requirement that must be satisfied before electron switching is included.
+
+A conservative static-manifold gate interpretation requires the probability of an electron-state change during the gate to be small. For an exponential switching time $\tau_e$,
+\begin{equation}
+P_{\rm switch}=1-e^{-t_g/\tau_e}.
+\end{equation}
+At $t_g=11.4\,\mu$s, $P_{\rm switch}<0.1$ requires $\tau_e\gtrsim108\,\mu$s, while $P_{\rm switch}<0.01$ requires $\tau_e\gtrsim1.14$ ms. These inequalities are experimental specifications, not properties demonstrated by the present junction. They could be approached by electron-state preparation, altered tunnelling conditions, lower electron temperature, spin pumping or another protocol that suppresses switching during the control interval. The pulsed single-shot experiment already demonstrates temporal separation between probing and an undisturbed waiting interval by turning off DC and RF excitation between probe pulses \cite{stolte2025}, but it does not establish the electron-stability times required above.
+
+If switching cannot be suppressed, the appropriate next model is a stochastic-Liouville or Lindblad calculation using the full electron-nuclear Hamiltonians and measured switching rates. The fourteen-tone result remains relevant in that regime because a switching-robust protocol must first avoid a control spectrum that fails catastrophically in either electron-conditioned manifold.
+
+\subsection{Coherence and linewidth requirements}
+The measured 5.3 s quantity is a nuclear population lifetime $T_1$, not a nuclear coherence time \cite{stolte2025}. Under the adjacent-level pure-dephasing model used in the accompanying analysis, the requirement is approximately $T_{2,{\rm adj}}/t_g\sim10^3$ for 99\% average logical fidelity. At 20 kHz, where $t_g=12.5\,\mu$s, this corresponds to $T_{2,{\rm adj}}\gtrsim12.6$ ms. The corresponding values for 99.9\% and 99.99\% are 126 ms and 1.26 s. These are specifications for future Ramsey and echo measurements, not inferred \Ti\ coherence times.
+
+A second missing experimental quantity is the NMR linewidth. Once a consistently defined linewidth $\Gamma_{\rm NMR}$ is measured under the relevant junction and drive conditions, the spectral result can be converted into
+\begin{equation}
+Q_{\rm sel}=\frac{\DeltaInter}{\Gamma_{\rm NMR}}.
+\end{equation}
+The reported single-atom NMR fit precision is not itself a tabulated linewidth, so no numerical $Q_{\rm sel}$ is assigned here \cite{vennema2025}.
+
+\section{Conclusion}
+The dual-manifold addressability of a hyperfine-coupled quadrupolar nucleus has a simple analytic structure once the physical absolute transition frequencies are treated correctly. In the strong-hyperfine regime one electron-conditioned comb reverses order, the common hyperfine offset cancels, and the remaining spectral competition is controlled by $2\gamma_NB$ and the quadrupole spacing $S$. This gives a general maximum-field rule, Eq.~\eqref{eq:Bgeneral}, and a hard ceiling $\Delta_{\max}=3|\kappa|/[4I(2I-1)]$.
+
+For surface \Ti, the full 16-level sensitivity calculation identifies 1.0292 T as a minimax operating field when the junction-specific quadrupole and transverse hyperfine parameters are not yet known. The worst sampled separation is 1.188 MHz and remains above 1 MHz from 0.992 to 1.069 T. In the static-electron multitone model, the first 99\%-fidelity drive-rate crossing increases from 4.8 kHz at the 1.35 T readout field to 21.9 kHz at 1.0292 T. The uncertainty of the spectral window is dominated by $\kappa$ and $A_\perp/A_z$, identifying the measurements with the highest leverage for refining the prediction.
+
+The same analysis also specifies what is still required experimentally. At 0.4 K the electron is not fully polarized, which motivates compatibility with both electron manifolds, while the measured electron lifetime is far shorter than the modeled gate time. The static control result therefore becomes experimentally predictive only if electron switching is suppressed over the gate interval or is treated in a full driven-dissipative model. With those conditions stated explicitly, the combined field rule, EFG ceiling and electron-state requirements provide a coherent route from single-atom spectroscopy to an experimentally testable nuclear-qudit control protocol.
+
+\section*{Data and code availability}
+The original reproducibility release is archived on Zenodo as version 1.0.0, DOI \href{https://doi.org/10.5281/zenodo.21969250}{10.5281/zenodo.21969250}, with concept DOI \href{https://doi.org/10.5281/zenodo.21969249}{10.5281/zenodo.21969249}. The revised submission is accompanied by a repository-ready version 2.0.0 folder containing the low-field robustness calculation, control sweeps, sensitivity decomposition, design map, source scripts, publication figures and checksum manifest. This folder is intended for release through the same GitHub-Zenodo integration before final publication. The version-specific DOI should be inserted in the publication proof after the v2.0.0 release is minted.
+
+\section*{Author contributions}
+A.V. conceived the study, developed and executed the computational analysis, analysed the results and prepared the manuscript.
+
+\section*{Funding}
+This research received no specific grant from any funding agency in the public, commercial or not-for-profit sectors.
+
+\section*{Competing interests}
+The author declares no competing interests.
+
+\begin{thebibliography}{99}
+\bibitem{stolte2025} Stolte E W, Lee J, Vennema H G, Broekhoven R, Teng E, Katan A J, Veldman L M, Willke P and Otte S 2025 Single-shot readout of the nuclear spin of an on-surface atom \emph{Nat. Commun.} \textbf{16} 7785 doi:10.1038/s41467-025-63232-5
+\bibitem{vennema2025} Vennema H G, Mier C, Stolte E W, Edens L, Lee J and Otte S 2025 Nuclear magnetic resonance on a single atom with a local probe arXiv:2512.11652
+\bibitem{veldman2024} Veldman L M, Stolte E W, Canavan M P, Broekhoven R, Willke P, Farinacci L and Otte S 2024 Coherent spin dynamics between electron and nucleus within a single atom \emph{Nat. Commun.} \textbf{15} 7951 doi:10.1038/s41467-024-52270-0
+\bibitem{willke2018} Willke P \emph{et al.} 2018 Hyperfine interaction of individual atoms on a surface \emph{Science} \textbf{362} 336--339 doi:10.1126/science.aat7047
+\bibitem{kim2022} Kim J, Noh K, Chen Y, Donati F, Heinrich A J, Wolf C and Bae Y 2022 Anisotropic hyperfine interaction of surface-adsorbed single atoms \emph{Nano Lett.} \textbf{22} 9766--9772 doi:10.1021/acs.nanolett.2c02782
+\bibitem{asaad2020} Asaad S \emph{et al.} 2020 Coherent electrical control of a single high-spin nucleus in silicon \emph{Nature} \textbf{579} 205--209 doi:10.1038/s41586-020-2057-7
+\bibitem{fernandez2024} Fern\'andez de Fuentes I \emph{et al.} 2024 Navigating the 16-dimensional Hilbert space of a high-spin donor qudit with electric and magnetic fields \emph{Nat. Commun.} \textbf{15} 1380 doi:10.1038/s41467-024-45368-y
+\bibitem{yu2025} Yu X \emph{et al.} 2025 Schr\"odinger cat states of a nuclear spin qudit in silicon \emph{Nat. Phys.} \textbf{21} 362--367 doi:10.1038/s41567-024-02745-0
+\bibitem{lim2025prl} Lim S, Vaganov M V, Liu J and Ardavan A 2025 Demonstrating experimentally the encoding and dynamics of an error-correctable logical qubit on a hyperfine-coupled nuclear spin qudit \emph{Phys. Rev. Lett.} \textbf{134} 070603 doi:10.1103/PhysRevLett.134.070603
+\bibitem{lim2023pra} Lim S, Liu J and Ardavan A 2023 Fault-tolerant qubit encoding using a spin-7/2 qudit \emph{Phys. Rev. A} \textbf{108} 062403 doi:10.1103/PhysRevA.108.062403
+\bibitem{lim2026electric} Lim S, Vaganov M V, Fontana N, Liu J and Ardavan A 2026 Coherent electric field manipulation of nuclear spin qudit arXiv:2607.26716
+\bibitem{stone2016} Stone N J 2016 Table of nuclear electric quadrupole moments \emph{At. Data Nucl. Data Tables} \textbf{111--112} 1--28 doi:10.1016/j.adt.2015.12.002
+\bibitem{nielsen2002} Nielsen M A 2002 A simple formula for the average gate fidelity of a quantum dynamical operation \emph{Phys. Lett. A} \textbf{303} 249--252 doi:10.1016/S0375-9601(02)01272-0
+\end{thebibliography}
+
+\end{document}

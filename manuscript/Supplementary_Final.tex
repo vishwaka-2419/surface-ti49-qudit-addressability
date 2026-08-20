@@ -1,0 +1,239 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=2.25cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{caption}
+\usepackage{newtxtext,newtxmath}
+\hypersetup{colorlinks=true,linkcolor=black,citecolor=black,urlcolor=blue}
+\captionsetup{font=small,labelfont=bf}
+\newcommand{\Ti}{$^{49}$Ti}
+\newcommand{\DeltaInter}{\Delta_{\mathrm{inter}}^{\min}}
+\newcommand{\fR}{f_R}
+\title{Supplementary Information\\Quadrupole-limited control windows for an atomically addressable $^{49}$Ti nuclear-spin qudit}
+\author{Aishwarya Vishwakarma\\Department of Quantum Matter Physics, University of Geneva, 1211 Geneva, Switzerland\\\href{mailto:Aishwarya.Vishwakarma@unige.ch}{Aishwarya.Vishwakarma@unige.ch}}
+\date{}
+\begin{document}
+\maketitle
+
+\section{Hamiltonian convention and parameter provenance}
+The full calculation uses $S=1/2$, $I=7/2$ and
+\begin{align}
+\frac{H}{h}={}&\frac{\mu_B}{h}\left[g_z(B+B_{\rm tip}\cos\phi)S_z+g_\perp B_{\rm tip}\sin\phi S_x\right]+\frac{\mu_N}{h}g_NBI_z\\
+&+A_zS_zI_z+A_\perp(S_xI_x+S_yI_y)+\frac{\kappa}{2I(2I-1)}\left[I_z^2-\frac{1}{2}(I_x^2+I_y^2)\right].
+\end{align}
+The fitted STM tip field is applied to the electron Zeeman term and not the nuclear Zeeman term, following the physical convention of the single-atom NMR model \cite{vennema2025}. The $^{47}$Ti tip parameters are contextual sensitivity inputs rather than measurements on the \Ti\ readout junction.
+
+\begin{table}[h]
+\centering
+\caption{Numerical inputs and their role.}
+\begin{tabular}{lll}
+\toprule
+Quantity & Value or range & Role\\
+\midrule
+$I(^{49}{\rm Ti})$ & $7/2$ & isotope property\\
+$A_z$ baseline & 130 MHz & \Ti\ hyperfine scale \cite{stolte2025}\\
+$A_z$ comparison & 132.1 MHz & $^{47}$Ti fit \cite{vennema2025}\\
+$A_\perp/A_z$ & 0, 0.05, 0.10, 0.20 & sensitivity grid\\
+$\kappa_{47}$ & $-56.7\pm0.8$ MHz & $^{47}$Ti fit \cite{vennema2025}\\
+$\kappa_{49}$ & $-46.3738\pm2.6554$ MHz & same-EFG isotope scaling\\
+$|g_N(^{49}{\rm Ti})|$ & 0.314686 & numerical nuclear factor\\
+$g_z$ & $0.56\pm0.02$ & contextual sensitivity range\\
+$B_{\rm tip}$ & $67.9\pm2.1$ mT & contextual sensitivity range\\
+$\phi$ & $5\pm2^\circ$ & contextual sensitivity range\\
+$g_\perp/g_z$ & 0.5, 1.0, 1.5 & sensitivity grid\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Isotope-scaling arithmetic}
+Stone \cite{stone2016} gives the recommended ground-state moments
+\begin{equation}
+Q_{47}=0.302(10)\ {\rm b},\qquad Q_{49}=0.247(11)\ {\rm b}.
+\end{equation}
+For the same EFG,
+\begin{equation}
+R_Q=\frac{Q_{49}}{Q_{47}}=0.8178808,
+\end{equation}
+with relative standard uncertainty
+\begin{equation}
+\frac{\sigma_R}{R_Q}=\sqrt{\left(\frac{0.011}{0.247}\right)^2+\left(\frac{0.010}{0.302}\right)^2}=0.05550.
+\end{equation}
+Thus $\kappa_{49}=R_Q\kappa_{47}=-46.37384$ MHz. Combining the $\kappa_{47}$ fit uncertainty and the quadrupole-moment uncertainty in quadrature gives
+\begin{equation}
+\sigma_{\kappa_{49}}=\sqrt{(R_Q\,0.8)^2+(56.7\,R_Q\,0.05550)^2}=2.6554\ {\rm MHz}.
+\end{equation}
+The dominant uncertainty in this isotope scaling comes from the nuclear quadrupole moments, not the fitted $\kappa_{47}$ alone.
+
+\section{Explicit derivation of the rigid-comb result}
+Using $I_x^2+I_y^2=I(I+1)-I_z^2$, the diagonal axial quadrupole energy is
+\begin{equation}
+\frac{E_Q(m_I)}{h}=\frac{\kappa}{4I(2I-1)}\left[3m_I^2-I(I+1)\right].
+\end{equation}
+The signed adjacent transition $m_I\rightarrow m_I-1$ in electron manifold $m_s$ is therefore
+\begin{equation}
+\nu_{m_s,m_I}=\gamma_NB+A_zm_s+\frac{3\kappa}{4I(2I-1)}(2m_I-1).
+\end{equation}
+The physical spectroscopy measures $|\nu|$. In the strong-hyperfine regime $|A_z|/2>|\gamma_NB|+3S$, all seven $m_s=+1/2$ transitions retain the sign of $A_z/2$ and all seven $m_s=-1/2$ transitions have the opposite signed orientation. Taking the absolute value therefore reverses the order of the latter comb. With $n,m=-3,\ldots,3$,
+\begin{align}
+f_n^{(+)}&=\frac{|A_z|}{2}+\gamma_NB+nS,\\
+f_m^{(-)}&=\frac{|A_z|}{2}-\gamma_NB-mS,\\
+S&=\frac{3|\kappa|}{2I(2I-1)}.
+\end{align}
+Hence
+\begin{equation}
+f_n^{(+)}-f_m^{(-)}=2\gamma_NB+(n+m)S
+\end{equation}
+and
+\begin{equation}
+\DeltaInter(B)=\min_{\ell}|\ell S-2\gamma_NB|.
+\end{equation}
+This derivation makes explicit why the common $|A_z|/2$ offset cancels from the observable inter-manifold line separation.
+
+The nearest point of one rigid comb to the other can never lie farther than half a comb spacing, so $\DeltaInter\leq S/2$. Since the nearest intra-manifold spacing is $S$, the inter-manifold constraint is always the tighter one for dual-manifold control.
+
+\section{General spin dependence}
+For the axial convention used above,
+\begin{equation}
+S_I=\frac{3|\kappa|}{2I(2I-1)},\qquad
+\Delta_{\max}=\frac{3|\kappa|}{4I(2I-1)},
+\end{equation}
+and
+\begin{equation}
+B_r^{\max}=\frac{3(2r+1)|\kappa|}{8I(2I-1)|\gamma_N|}.
+\end{equation}
+The following dimensionless coefficients illustrate the spin dependence without importing host-specific quadrupole couplings.
+\begin{table}[h]
+\centering
+\caption{Axial comb coefficients for representative high-spin nuclei. The formulas require the host-specific $\kappa$ and $\gamma_N$ for numerical fields.}
+\begin{tabular}{lccc}
+\toprule
+Representative nucleus & $I$ & $S_I/|\kappa|$ & $\Delta_{\max}/|\kappa|$\\
+\midrule
+$^{173}$Yb & $5/2$ & $3/20$ & $3/40$\\
+$^{49}$Ti, $^{123}$Sb & $7/2$ & $1/14$ & $1/28$\\
+$^{209}$Bi & $9/2$ & $1/24$ & $1/48$\\
+\bottomrule
+\end{tabular}
+\end{table}
+The central point is that the field prescription is not specific to Ti. Once $I$, $\gamma_N$ and the host-dependent $\kappa$ are known, the same comb construction gives the crossing and maximum fields.
+
+\section{Full-model sensitivity envelope and validation}
+The sensitivity grid contains $3\times3\times3\times3\times2\times4\times3=1944$ scenarios. It is deterministic and should not be interpreted as a statistical confidence set. The reconstructed implementation was validated against the previous archived values before the low-field extension was accepted:
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+Field & reconstructed worst (MHz) & archived worst (MHz) & difference (MHz)\\
+\midrule
+1.35 T & 0.0541847 & 0.0541960 & $-1.13\times10^{-5}$\\
+1.714 T & 1.0927570 & 1.0927410 & $+1.60\times10^{-5}$\\
+\bottomrule
+\end{tabular}
+\end{center}
+The low-field search used 1 mT spacing from 0.95 to 1.11 T, followed by 0.2 mT refinement around the coarse maximum. The result is
+\begin{equation}
+B_{\rm minimax}=1.0292\ {\rm T},\quad
+\min_{\rm grid}\DeltaInter=1.187772\ {\rm MHz},
+\end{equation}
+with a contiguous coarse-grid interval 0.992 to 1.069 T for which the worst sampled separation is at least 1 MHz.
+
+\subsection{One-at-a-time sensitivity decomposition}
+Each documented parameter range was varied independently around the source-backed realization at 1.0292 T. Figure~\ref{fig:oat} and Table~\ref{tab:oat} show the resulting span of $\DeltaInter$.
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\linewidth]{figures/FigS1_oat_sensitivity.pdf}
+\caption{One-at-a-time span of the full-model source-backed separation at 1.0292 T. The quadrupole coupling and transverse hyperfine ratio dominate the sensitivity by more than two orders of magnitude over the tip-field and angular axes.}
+\label{fig:oat}
+\end{figure}
+\begin{table}[h]
+\centering
+\caption{One-at-a-time spans at 1.0292 T.}
+\label{tab:oat}
+\begin{tabular}{lr}
+\toprule
+Parameter axis & span in $\DeltaInter$ (MHz)\\
+\midrule
+$\kappa$ & 0.29969\\
+$A_\perp/A_z$ & 0.23041\\
+$g_z$ & 0.00238\\
+$A_z$ & 0.00109\\
+$g_\perp/g_z$ & 0.000277\\
+$\phi$ & 0.000209\\
+$B_{\rm tip}$ & 0.000143\\
+\bottomrule
+\end{tabular}
+\end{table}
+The full minimax corner combines several extremes, but the one-at-a-time decomposition shows that the model leverage is concentrated in $\kappa$ and $A_\perp/A_z$.
+
+\section{Fourteen-tone control construction and numerical integration}
+For a static electron manifold, the projected nuclear basis has seven adjacent links. The physical waveform contains the seven frequencies from each of the two electron manifolds. A common physical amplitude scale $\fR$ is applied to all tones. For transition $m$, the interaction-picture coupling is proportional to
+\begin{equation}
+\fR d_m,\qquad d_m=\langle m-1|I_x|m\rangle,
+\end{equation}
+so the Clebsch-Gordan amplitudes needed for an $I_y$ rotation arise automatically from the projected $I_x$ matrix elements. Each tone phase is $\arg(d_m)+\pi/2$. This is the multitone SU(2) construction used in high-spin nuclear control \cite{asaad2020,fernandez2024,yu2025}.
+
+The target is $U_{\rm target}=\exp[-i(\pi/2)I_y]$ and $t_g=1/(4\fR)$. The interaction-picture $8\times8$ propagator is integrated independently in both electron manifolds under the same waveform using DOP853 with relative tolerance $2\times10^{-8}$ and absolute tolerance $2\times10^{-10}$. The maximum time step is restricted by the gate time and by the largest detuning below 15 MHz. For $d=8$, the average gate fidelity is
+\begin{equation}
+F_{\rm avg}=\frac{\mathrm{Tr}(U^\dagger U)+|\mathrm{Tr}(U_{\rm target}^\dagger U)|^2}{d(d+1)}
+\end{equation}
+\cite{nielsen2002}. The reported control metric is the minimum of the two electron-manifold fidelities.
+
+The source-backed realization is $A_z=130$ MHz, $\kappa=-46.3738411$ MHz, $g_z=0.56$, $B_{\rm tip}=67.9$ mT, $\phi=5^\circ$, $A_\perp/A_z=10/130$ and $g_\perp/g_z=1$.
+\begin{table}[h]
+\centering
+\caption{Representative source-backed worst-manifold fidelities.}
+\begin{tabular}{rccc}
+\toprule
+$\fR$ (kHz) & 1.35 T & 1.0292 T & 1.714 T\\
+\midrule
+5 & 0.988043 & 0.999647 & 0.999475\\
+10 & 0.941427 & 0.997627 & 0.997439\\
+20 & 0.545803 & 0.992079 & 0.990802\\
+35 & 0.198257 & 0.967298 & 0.976625\\
+\bottomrule
+\end{tabular}
+\end{table}
+Dense scans use 0.25 kHz spacing around the first 99\% crossing. The interpolated thresholds are 4.8150, 21.9289 and 21.6133 kHz at 1.35, 1.0292 and 1.714 T, respectively. The non-monotonicity close to the threshold is visible in Fig. 2 of the main text. These coherent revivals motivate the first-crossing definition rather than the largest isolated sampled passing point.
+
+A previous diagnostic normalized the two optimized curves by the matched source-backed $\DeltaInter$. Because those two separations differ by less than 1\%, this comparison does not provide a sufficient lever arm to establish a scaling law. It is retained in the archived exploratory analysis but is not used as a publication-facing claim. A genuine $\fR^{99}$ versus $\DeltaInter$ scaling test requires additional control propagations at intermediate fields.
+
+\section{Electron occupation and switching specification}
+The single-shot experiment was performed at $T=0.4$ K and reports significant thermal population of the excited electron state \cite{stolte2025}. Using only the external-field source-backed Zeeman splitting at 1.0292 T,
+\begin{equation}
+\frac{g_z\mu_BB}{h}=8.07\ {\rm GHz},\qquad \frac{h\nu}{k_B}=0.387\ {\rm K},
+\end{equation}
+which gives the two-level Boltzmann estimate
+\begin{equation}
+p_{\rm exc}=\frac{1}{1+e^{0.387/0.4}}\simeq0.275.
+\end{equation}
+Including the source-backed longitudinal tip field gives about 0.263. These numbers are orientation estimates rather than a fit to the non-equilibrium STM electron populations.
+
+The same experiment cites an electron lifetime of order 100 ns on the atom, while $\fR^{99}=21.93$ kHz corresponds to $t_g=11.4\,\mu$s. If the static-manifold propagation is to be interpreted as a gate without switching, an exponential switching time $\tau_e$ must satisfy
+\begin{equation}
+1-e^{-t_g/\tau_e}\ll1.
+\end{equation}
+Numerically, $P_{\rm switch}<0.1$ requires $\tau_e>108\,\mu$s, and $P_{\rm switch}<0.01$ requires $\tau_e>1.14$ ms. These are control specifications, not demonstrated electron lifetimes. The pulsed readout protocol demonstrates that DC and RF excitation can be turned off between probe pulses \cite{stolte2025}; whether a control configuration can also suppress electron switching to the required scale remains an experimental question.
+
+If the electron is prepared and remains in one manifold, the waveform contains seven rather than fourteen resonant tones and the inter-manifold ceiling $S/2$ no longer binds. The leading-order spacing relevant to adjacent transitions is then $S$. No seven-tone gate-rate threshold is inferred here because it requires a dedicated propagation.
+
+\section{Coherence, linewidth and next measurements}
+No measured \Ti\ nuclear $T_2$ is assumed. Under the adjacent-level pure-dephasing model of the archived analysis, $T_{2,{\rm adj}}/t_g$ is approximately $10^3$, $10^4$ and $10^5$ for 99\%, 99.9\% and 99.99\% target fidelities. At 20 kHz, these correspond to 12.6 ms, 126 ms and 1.26 s.
+
+A future selectivity figure of merit is $Q_{\rm sel}=\DeltaInter/\Gamma_{\rm NMR}$, where $\Gamma_{\rm NMR}$ is a linewidth measured under the relevant drive and junction conditions. The fit precision reported in the $^{47}$Ti single-atom NMR preprint is not used as a linewidth \cite{vennema2025}. The highest-leverage measurements are therefore: (i) direct \Ti\ NMR through 0.99 to 1.07 T; (ii) direct \Ti\ quadrupole and transverse-hyperfine extraction on the target junction; (iii) time-domain nuclear Rabi calibration; (iv) Ramsey and echo $T_2$; (v) electron switching rates during the control interval; and (vi) adsorption-site or tip-configuration dependence of the EFG.
+
+\section{Reproducibility package}
+The version 2.0.0 repository-ready folder accompanying this revision contains the low-field 16-level scan, validation records, dense control sweeps, one-at-a-time sensitivity data, field-quadrupole design map, scripts, publication figures and SHA-256 checksums. The earlier Zenodo release remains available as version 1.0.0 at DOI \href{https://doi.org/10.5281/zenodo.21969250}{10.5281/zenodo.21969250}; the version 2.0.0 release should be created under the same concept record before final publication.
+
+\begin{thebibliography}{99}
+\bibitem{stolte2025} Stolte E W, Lee J, Vennema H G, Broekhoven R, Teng E, Katan A J, Veldman L M, Willke P and Otte S 2025 \emph{Nat. Commun.} \textbf{16} 7785 doi:10.1038/s41467-025-63232-5
+\bibitem{vennema2025} Vennema H G, Mier C, Stolte E W, Edens L, Lee J and Otte S 2025 Nuclear magnetic resonance on a single atom with a local probe arXiv:2512.11652
+\bibitem{kim2022} Kim J, Noh K, Chen Y, Donati F, Heinrich A J, Wolf C and Bae Y 2022 \emph{Nano Lett.} \textbf{22} 9766--9772 doi:10.1021/acs.nanolett.2c02782
+\bibitem{stone2016} Stone N J 2016 \emph{At. Data Nucl. Data Tables} \textbf{111--112} 1--28 doi:10.1016/j.adt.2015.12.002
+\bibitem{asaad2020} Asaad S \emph{et al.} 2020 \emph{Nature} \textbf{579} 205--209 doi:10.1038/s41586-020-2057-7
+\bibitem{fernandez2024} Fern\'andez de Fuentes I \emph{et al.} 2024 \emph{Nat. Commun.} \textbf{15} 1380 doi:10.1038/s41467-024-45368-y
+\bibitem{yu2025} Yu X \emph{et al.} 2025 \emph{Nat. Phys.} \textbf{21} 362--367 doi:10.1038/s41567-024-02745-0
+\bibitem{nielsen2002} Nielsen M A 2002 \emph{Phys. Lett. A} \textbf{303} 249--252 doi:10.1016/S0375-9601(02)01272-0
+\end{thebibliography}
+\end{document}

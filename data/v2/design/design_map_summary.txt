@@ -1,0 +1,22 @@
+gamma_N(49Ti) = 2.398723390 MHz/T
+
+current 49Ti: |kappa| = 46.3738 MHz
+  hard ceiling = 1.656207 MHz
+  leading-order maxima in plotted field range:
+    ell=1+1/2 : B = 1.035680 T
+    ell=2+1/2 : B = 1.726134 T
+
+3 MHz ceiling target: |kappa| = 84.0000 MHz
+  hard ceiling = 3.000000 MHz
+  leading-order maxima in plotted field range:
+    ell=0+1/2 : B = 0.625333 T
+
+5 MHz ceiling target: |kappa| = 140.0000 MHz
+  hard ceiling = 5.000000 MHz
+  leading-order maxima in plotted field range:
+    ell=0+1/2 : B = 1.042221 T
+
+current |kappa| at B=1.0292 T -> leading-order delta = 1.625118 MHz
+current |kappa| at B=1.0357 T -> leading-order delta = 1.656113 MHz
+current |kappa| at B=1.3500 T -> leading-order delta = 0.148275 MHz
+current |kappa| at B=1.7140 T -> leading-order delta = 1.597995 MHz

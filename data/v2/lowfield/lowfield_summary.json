@@ -1,0 +1,22 @@
+{
+  "scenario_count": 1944,
+  "analytic_candidate_B_T": 1.0357,
+  "analytic_candidate_worst_full16_MHz": 1.1572592184775203,
+  "robust_lowfield_B_T": 1.0291999999999986,
+  "robust_lowfield_worst_MHz": 1.18777205982542,
+  "robust_lowfield_median_MHz": 1.3795434241530984,
+  "robust_lowfield_limiting_scenario": {
+    "kappa_MHz": -43.7184,
+    "gz": 0.54,
+    "Btip_T": 0.0658,
+    "phi_deg": 7.0,
+    "Az_MHz": 132.1,
+    "Aperp_over_Az": 0.2,
+    "gperp_over_gz": 0.5
+  },
+  "coarse_window_worst_ge_1MHz_T": [
+    0.992,
+    1.069
+  ],
+  "grid_note": "Deterministic sensitivity envelope; not a probability distribution or confidence interval."
+}

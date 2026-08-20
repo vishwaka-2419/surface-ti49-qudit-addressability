@@ -1,7 +1,7 @@
 cff-version: 1.2.0
-message: "If you use this software or frozen data, please cite the Zenodo release and accompanying manuscript."
-title: "Surface 49Ti nuclear-qudit addressability: analysis and frozen data"
-version: 1.0.0
+message: "If you use this software or derived data, please cite the Zenodo v2.0.0 release and accompanying manuscript."
+title: "Surface 49Ti nuclear-qudit control windows: analysis and reproducibility data"
+version: 2.0.0
 type: software
 authors:
   - family-names: Vishwakarma

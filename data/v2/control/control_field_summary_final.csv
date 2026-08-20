@@ -1,0 +1,4 @@
+case,B_T,worst_separation_MHz,fR99_first_crossing_kHz,bandwidth_gain_vs_1p35
+readout field,1.35,0.054196,4.815,1.0
+low-field robust,1.0292,1.1877720598,21.9289,4.554288681204568
+high-field robust,1.714,1.092741,21.6133,4.488743509865005

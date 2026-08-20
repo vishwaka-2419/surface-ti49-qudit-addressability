@@ -1,0 +1,36 @@
+{
+  "B_1p35_T": {
+    "B_T": 1.35,
+    "reconstructed_worst_MHz": 0.05418467734125443,
+    "archived_worst_MHz": 0.054196,
+    "difference_MHz": -1.1322658745573089e-05,
+    "tolerance_MHz": 5e-05,
+    "PASS": true,
+    "limiting_scenario": {
+      "kappa_MHz": -46.3738,
+      "gz": 0.54,
+      "Btip_T": 0.0658,
+      "phi_deg": 7.0,
+      "Az_MHz": 132.1,
+      "Aperp_over_Az": 0.2,
+      "gperp_over_gz": 0.5
+    }
+  },
+  "B_1p714_T": {
+    "B_T": 1.714,
+    "reconstructed_worst_MHz": 1.09275696216082,
+    "archived_worst_MHz": 1.092741,
+    "difference_MHz": 1.5962160820004456e-05,
+    "tolerance_MHz": 5e-05,
+    "PASS": true,
+    "limiting_scenario": {
+      "kappa_MHz": -49.0292,
+      "gz": 0.54,
+      "Btip_T": 0.0658,
+      "phi_deg": 7.0,
+      "Az_MHz": 132.1,
+      "Aperp_over_Az": 0.2,
+      "gperp_over_gz": 0.5
+    }
+  }
+}
