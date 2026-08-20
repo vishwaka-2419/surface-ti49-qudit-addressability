@@ -1,6 +1,6 @@
 {
-  "title": "Surface 49Ti nuclear-qudit addressability: analysis and frozen data",
-  "description": "Manuscript-level analysis scripts and frozen derived data for a spectroscopy-to-control study of the atomically addressable 49Ti I=7/2 nuclear-spin platform on MgO/Ag(100).",
+  "title": "Surface 49Ti nuclear-qudit control windows: analysis and reproducibility data",
+  "description": "Version 2.0.0 reproducibility release for a spectroscopy-to-control study of the atomically addressable 49Ti I=7/2 nuclear-spin platform on MgO/Ag(100). It includes the validated low-field 16-level robustness calculation, dense dual-manifold control sweeps, one-at-a-time sensitivity decomposition, field-quadrupole design outputs, source scripts and publication figures.",
   "creators": [
     {
       "name": "Vishwakarma, Aishwarya",
@@ -9,13 +9,15 @@
   ],
   "license": "MIT",
   "upload_type": "software",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "keywords": [
     "nuclear spin",
     "qudit",
     "ESR-STM",
     "49Ti",
     "quantum control",
-    "Gray encoding"
+    "spectral addressability",
+    "quadrupole interaction",
+    "electric field gradient"
   ]
 }
